@@ -54,10 +54,10 @@ class AuthController {
       const {
         phoneNumber, password
       } = req.body;
-      const options = {
-        phoneNumber, password
-      };
-      const newUser = await BaseRepository.findUser(Users, options);
+      const userFound = await BaseRepository.findByField(Users, 'phoneNumber', phoneNumber);
+      const newUser = userFound[0];
+      const match = await newUser.comparePassword(password);
+      if (!match) return res.status(401).json({ error: 'Wrong credentials, try again!' });
       if (newUser) {
         const payload = {
           firstName: newUser.firstName,

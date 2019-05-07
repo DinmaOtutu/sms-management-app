@@ -21,12 +21,13 @@ class BaseRepository {
   /**
  * @description find document
  * @param {Model} Model
- * @param {option} phoneNumber
+ * @param {option} field
+ * @param {option} value
  * @returns {document} returns a newly created document
  */
-  static async findUser(Model, phoneNumber) {
+  static async findByField(Model, field, value) {
     try {
-      const document = await Model.findOne(phoneNumber);
+      const document = await Model.find({ [field]: value }).exec();
       return document;
     } catch (error) {
       throw error;
