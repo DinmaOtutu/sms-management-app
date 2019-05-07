@@ -20,5 +20,39 @@
   "bugs": {
     "url": "https://github.com/DinmaOtutu/sms-management-app/issues"
   },
-  "homepage": "https://github.com/DinmaOtutu/sms-management-app#readme"
+  "homepage": "https://github.com/DinmaOtutu/sms-management-app#readme",
+  "dependencies": {
+    "@babel/cli": "^7.2.3",
+    "@babel/core": "^7.2.2",
+    "@babel/node": "^7.2.2",
+    "@babel/preset-env": "^7.3.1",
+    "@babel/register": "^7.0.0",
+    "bcrypt": "^3.0.6",
+    "body-parser": "^1.19.0",
+    "chai": "^4.2.0",
+    "chai-http": "^4.2.1",
+    "cors": "^2.8.5",
+    "coveralls": "^3.0.3",
+    "cross-env": "^5.2.0",
+    "dotenv": "^7.0.0",
+    "express": "^4.16.4",
+    "express-validator": "^5.3.1",
+    "helmet": "^3.16.0",
+    "jsonwebtoken": "^8.5.0",
+    "mocha": "^6.0.2",
+    "moment": "^2.24.0",
+    "mongoose": "^5.4.19",
+    "mongoose-paginate": "^5.0.3",
+    "mongoose-unique-validator": "^2.0.2",
+    "morgan": "^1.9.1",
+    "nodemon": "^1.18.11",
+    "nyc": "^13.3.0",
+    "winston": "^3.2.1"
+  },
+  "devDependencies": {
+    "babel-plugin-add-module-exports": "^1.0.0",
+    "eslint": "^5.15.2",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-plugin-import": "^2.16.0"
+  }
 }
