@@ -41,6 +41,42 @@ class AuthController {
       });
     }
   }
+
+  /**
+ * @description creates a new user
+ * @param  {object} req
+ * @param {object} res
+ * @returns {object} a newly created user
+ * @memberof AuthController
+ */
+  static async login(req, res) {
+    try {
+      const {
+        phoneNumber, password
+      } = req.body;
+      const options = {
+        phoneNumber, password
+      };
+      const newUser = await BaseRepository.findUser(Users, options);
+      if (newUser) {
+        const payload = {
+          firstName: newUser.firstName,
+          lastName: newUser.lastName,
+          phoneNumber: newUser.phoneNumber,
+          id: newUser._id,
+        };
+        const token = newUser.generateToken(payload);
+        return res.status(200).json({
+          message: 'logged in successfully',
+          token
+        });
+      }
+    } catch (error) {
+      return res.status(500).json({
+        error: 'failed to create a user',
+      });
+    }
+  }
 }
 
 export default AuthController;

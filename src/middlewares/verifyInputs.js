@@ -10,5 +10,13 @@ const verifyUserInput = {
 
     errorValidationHandler(req, res, next);
   },
+
+  loginRequestBody: (req, res, next) => {
+    req.check('phoneNumber', ' phone number is required').trim().notEmpty();
+    req.check('password', ' password is required').trim().notEmpty();
+    req.check('phoneNumber', 'phone number should be a number').isInt();
+
+    errorValidationHandler(req, res, next);
+  },
 };
 export default verifyUserInput;

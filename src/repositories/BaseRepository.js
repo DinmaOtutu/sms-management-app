@@ -17,6 +17,21 @@ class BaseRepository {
       throw error;
     }
   }
+
+  /**
+ * @description find document
+ * @param {Model} Model
+ * @param {option} phoneNumber
+ * @returns {document} returns a newly created document
+ */
+  static async findUser(Model, phoneNumber) {
+    try {
+      const document = await Model.findOne(phoneNumber);
+      return document;
+    } catch (error) {
+      throw error;
+    }
+  }
 }
 
 export default BaseRepository;
