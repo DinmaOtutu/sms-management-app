@@ -1,0 +1,19 @@
+{
+  "name": "sms-management-app",
+  "version": "1.0.0",
+  "description": "sms-management-system This is a system that manages the user's sms",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DinmaOtutu/sms-management-app.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DinmaOtutu/sms-management-app/issues"
+  },
+  "homepage": "https://github.com/DinmaOtutu/sms-management-app#readme"
+}

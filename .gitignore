@@ -1,0 +1,16 @@
+# Dependency directories
+node_modules/
+
+# Log file
+sms.log 
+
+# build output
+dist
+
+# dotenv file
+.env
+node_modules
+
+## test files
+.nyc_output/
+coverage/
