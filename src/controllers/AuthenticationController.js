@@ -117,7 +117,7 @@ class AuthController {
       if (userFound) {
         return res.status(200).json({
           message: 'retrieved successfully',
-          userFound
+          user: userFound
         });
       }
     } catch (error) {

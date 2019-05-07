@@ -18,5 +18,13 @@ const verifyUserInput = {
 
     errorValidationHandler(req, res, next);
   },
+
+  getUserRequestBody: (req, res, next) => {
+    req.check('id', ' ID is invalid').isMongoId();
+    req.check('id', ' ID is required').trim().notEmpty();
+
+
+    errorValidationHandler(req, res, next);
+  },
 };
 export default verifyUserInput;
