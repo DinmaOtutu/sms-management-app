@@ -37,13 +37,13 @@ class AuthController {
       }
     } catch (error) {
       return res.status(500).json({
-        error: 'failed to create a user',
+        error: error.message,
       });
     }
   }
 
   /**
- * @description creates a new user
+ * @description login a user
  * @param  {object} req
  * @param {object} res
  * @returns {object} a newly created user
@@ -69,6 +69,55 @@ class AuthController {
         return res.status(200).json({
           message: 'logged in successfully',
           token
+        });
+      }
+    } catch (error) {
+      return res.status(500).json({
+        error: error.message,
+      });
+    }
+  }
+
+  /**
+ * @description delete my account
+ * @param  {object} req
+ * @param {object} res
+ * @returns {object} a newly created user
+ * @memberof AuthController
+ */
+  static async deleteAccount(req, res) {
+    try {
+      const userDetails = req.authData;
+      const userFound = await BaseRepository.delete(Users, 'phoneNumber', userDetails.phoneNumber);
+      if (!userFound) return res.status(404).json({ error: 'User not found' });
+      if (userFound) {
+        return res.status(200).json({
+          message: 'account deleted successfully'
+        });
+      }
+    } catch (error) {
+      return res.status(500).json({
+        error: error.message,
+      });
+    }
+  }
+
+  /**
+ * @description get a new user
+ * @param  {object} req
+ * @param {object} res
+ * @returns {object} a newly created user
+ * @memberof AuthController
+ */
+  static async getUser(req, res) {
+    try {
+      const { id } = req.params;
+      const userFound = await BaseRepository.findById(Users, { _id: id });
+      if (!userFound) return res.status(404).json({ error: 'User not found' });
+      if (userFound) {
+        return res.status(200).json({
+          message: 'retrieved successfully',
+          userFound
         });
       }
     } catch (error) {
