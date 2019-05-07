@@ -4,7 +4,12 @@
   "description": "sms-management-system This is a system that manages the user's sms",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "npm run build && node dist/bin/www.js",
+    "clean": "rm -rf dist",
+    "prebuild": "npm run clean",
+    "build": "babel src -d dist",
+    "dev": "nodemon --watch src --delay 250ms --exec babel-node src/bin/www.js --ignore tests/",
+    "test": "cross-env NODE_ENV=test nyc --reporter=html mocha --require @babel/register ./src/tests/* --no-deprecation  --timeout 1000000 --exit  && nyc report"
   },
   "repository": {
     "type": "git",
